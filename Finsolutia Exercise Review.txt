@@ -1,0 +1,16 @@
+architecture
+	API project
+		DB Context
+		Repositories
+		Interfaces
+	WebSite
+		Repositories
+		Interfaces
+
+create API code first
+	https://learn.microsoft.com/en-us/ef/ef6/modeling/code-first/workflows/new-database?source=recommendations#1-create-the-application
+
+add swagger
+	https://www.c-sharpcorner.com/article/swagger-for-net-mvc-web-api/
+
+
