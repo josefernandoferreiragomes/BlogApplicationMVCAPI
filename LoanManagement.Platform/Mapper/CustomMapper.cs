@@ -33,7 +33,7 @@ namespace LoanManagement.Platform.Mapper
             });
         }
 
-        internal static void CloseMappingRegistration()
+        public static void CloseMappingRegistration()
         {
             if(mappings == null)
             {

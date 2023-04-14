@@ -13,4 +13,7 @@ create API code first
 add swagger
 	https://www.c-sharpcorner.com/article/swagger-for-net-mvc-web-api/
 
+paging
+	https://www.c-sharpcorner.com/article/execute-a-stored-procedure-programmatically/
+
 

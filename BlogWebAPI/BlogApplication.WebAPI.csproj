@@ -337,9 +337,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LoanManagement.Platform\BlogWebApi.Platform.csproj">
+    <ProjectReference Include="..\LoanManagement.Platform\BlogApplication.Platform.csproj">
       <Project>{8e5d0944-0364-4ea0-a39c-078ec5fefde4}</Project>
-      <Name>BlogWebApi.Platform</Name>
+      <Name>BlogApplication.Platform</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
