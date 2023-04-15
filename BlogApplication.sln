@@ -20,6 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApplication.DB", "BlogA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApplication.WCF", "BlogApplication.WCF\BlogApplication.WCF.csproj", "{8D45F8E2-438F-4AC8-8367-85F29FDCAE68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApplication.WebSite", "BlogApplication.WebSite\BlogApplication.WebSite.csproj", "{1B2D4567-3DCE-4FFE-953F-6EA3D4A63629}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8D45F8E2-438F-4AC8-8367-85F29FDCAE68} = {8D45F8E2-438F-4AC8-8367-85F29FDCAE68}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +57,10 @@ Global
 		{8D45F8E2-438F-4AC8-8367-85F29FDCAE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D45F8E2-438F-4AC8-8367-85F29FDCAE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D45F8E2-438F-4AC8-8367-85F29FDCAE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B2D4567-3DCE-4FFE-953F-6EA3D4A63629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B2D4567-3DCE-4FFE-953F-6EA3D4A63629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B2D4567-3DCE-4FFE-953F-6EA3D4A63629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B2D4567-3DCE-4FFE-953F-6EA3D4A63629}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

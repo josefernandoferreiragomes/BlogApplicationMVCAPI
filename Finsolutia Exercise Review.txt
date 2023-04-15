@@ -16,4 +16,9 @@ add swagger
 paging
 	https://www.c-sharpcorner.com/article/execute-a-stored-procedure-programmatically/
 
+webSite
+	reference API
+		http://localhost:60683/swagger/docs/v1
+		add reference to System.Runtime.Serialization
+
 

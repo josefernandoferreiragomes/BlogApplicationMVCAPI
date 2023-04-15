@@ -3,14 +3,14 @@ using LoanManagement.Platform.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
+using System.Web;
 using System.Web.Routing;
 using Unity;
 
 namespace BlogWebAPI
 {
-    public class WCFApplication
+    public class WCFApplication: System.Web.HttpApplication
     {
         protected void Application_Start()
         {

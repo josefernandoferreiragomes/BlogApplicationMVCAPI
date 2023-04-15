@@ -1,0 +1,21 @@
+﻿@model BlogApplication.WebSite.Models.ProductModel
+@{
+    ViewBag.Title = "Products";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title">Products</h1>
+        <p class="lead">Product page</p>
+    </section>
+
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post))
+    {
+        <div class="f-group">
+            @Html.LabelFor(m => m.Description, new { @class="form-text"})
+            @Html.TextBoxFor(m => m.Description, new {@class= "form-control" })
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</main>

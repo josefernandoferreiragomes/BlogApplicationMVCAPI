@@ -1,0 +1,40 @@
+﻿@model BlogApplication.WebSite.Models.ProductViewModel
+@{
+    ViewBag.Title = "Products";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title">Products</h1>
+        <p class="lead">Product page</p>        
+    </section>
+    <div class="row">
+        @Html.ActionLink(
+       linkText: "Create New",
+       actionName: "Create",
+       controllerName: "Product")
+    </div>
+    <div class="row">
+        <div class="table">
+            <div class="row bg-info">
+                <div class="col-lg-3">Id</div>
+                <div class="col-lg-3">Description</div>
+                <div class="col-lg-3">Price</div>
+            </div>
+            @foreach (var item in Model.Products)
+            {
+            <div class="row">
+                <div class="col-lg-3">@item.Id</div>
+                <div class="col-lg-3">@item.Description</div>
+                <div class="col-lg-3">@item.Price.ToString("C3")</div>
+            </div>
+            }
+        </div>
+       @Html.ActionLink(
+       linkText:"NextPage",
+       actionName: "Index",
+       controllerName:"Product",
+       routeValues:new {RowsPerPage=Model.RowsPerPage,Page=Model.Page+1,TextFilter=Model.TextFilter},
+       htmlAttributes: null)
+    </div>
+</main>
