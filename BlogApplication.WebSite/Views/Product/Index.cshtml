@@ -27,6 +27,14 @@
                 <div class="col-lg-3">@item.Id</div>
                 <div class="col-lg-3">@item.Description</div>
                 <div class="col-lg-3">@item.Price.ToString("C3")</div>
+                <div class="col-lg-3">
+                    @Html.ActionLink(
+                        linkText: "Edit",
+                        actionName: "Edit",
+                        controllerName: "Product",
+                        routeValues: new { Id=item.Id },
+                        htmlAttributes: null)
+                </div>
             </div>
             }
         </div>

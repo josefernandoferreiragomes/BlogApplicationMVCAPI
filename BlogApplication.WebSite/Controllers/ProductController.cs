@@ -59,16 +59,27 @@ namespace BlogApplication.WebSite.Controllers
         [HttpPost]
         public ActionResult Create(ProductModel inputModel)
         {
-            try
+            ProductModel model = new ProductModel();
+            //ModelState.AddModelError("error", new InvalidOperationException());
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                model.ValidationMessage = "Success";
+            }
+            else
+            {
+                model.ValidationMessage = "Error adding product";
+            }            
+            //try
+            //{
+            //    // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //    return RedirectToAction("Index");
+            //}
+            //catch
+            //{
+            //    return View(model);
+            //}
+            return View(model);
         }
 
         // GET: Product/Edit/5
@@ -79,7 +90,7 @@ namespace BlogApplication.WebSite.Controllers
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, ProductModel inputModel)
         {
             try
             {

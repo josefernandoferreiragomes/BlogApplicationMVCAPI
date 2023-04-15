@@ -6,16 +6,75 @@
 <main>
     <section class="row" aria-labelledby="aspnetTitle">
         <h1 id="title">Products</h1>
-        <p class="lead">Product page</p>
+        <p class="lead">Create</p>
     </section>
 
-    @using (Html.BeginForm("Create", "Product", FormMethod.Post))
+    @using (Html.BeginForm(actionName: "Create", controllerName: "Product", method: FormMethod.Post))
     {
-        <div class="f-group">
-            @Html.LabelFor(m => m.Description, new { @class="form-text"})
-            @Html.TextBoxFor(m => m.Description, new {@class= "form-control" })
+        <div class="container">
+            <div class="row f-group">
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.Description, new { @class = "form-text" })
+
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.Description, "", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row f-group">
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.Price, new { @class = "form-text" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.Price, "", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row f-group">
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.ProductDate, new { @class = "form-text" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.ProductDate, "", new { @class = "datepicker form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.ValidationMessageFor(m => m.ProductDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p></p>
+            <div class="row">
+                <div class="col-lg-4 text-danger">
+                    @if (Model != null) { @Model.ValidationMessage }
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit" />
         </div>
-        <p></p>
-        <button type="submit" class="btn btn-primary">Submit</button>
     }
 </main>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery-ui-1.13.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+                changemonth: true,
+                changeyear: true
+            });
+        });
+    </script>
+
+}

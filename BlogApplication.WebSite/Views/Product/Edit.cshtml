@@ -1,0 +1,46 @@
+﻿@model BlogApplication.WebSite.Models.ProductModel
+@{
+    ViewBag.Title = "Products";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <h1 id="title">Products</h1>
+        <p class="lead">Edit</p>
+    </section>
+
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+    {
+        <div class="f-group">
+            @Html.LabelFor(m => m.Description, new { @class = "form-text" })
+            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "form-control" })
+        </div>
+        <div class="f-group">
+            @Html.LabelFor(m => m.Price, new { @class = "form-text" })
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+
+        </div>
+        <div class="f-group">
+            @Html.LabelFor(m => m.ProductDate, new { @class = "form-text" })
+            @Html.TextBoxFor(m => m.ProductDate, new { @class = "datepicker" } )
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</main>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.13.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+                changemonth: true,
+                changeyear: true
+            });
+        });
+    </script>
+
+}

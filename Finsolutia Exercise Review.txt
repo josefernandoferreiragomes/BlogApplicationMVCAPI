@@ -16,9 +16,28 @@ add swagger
 paging
 	https://www.c-sharpcorner.com/article/execute-a-stored-procedure-programmatically/
 
+SQL ROW_NUMBER
+	https://www.sqlservertutorial.net/sql-server-window-functions/sql-server-row_number-function/
+
 webSite
 	reference API
 		http://localhost:60683/swagger/docs/v1
 		add reference to System.Runtime.Serialization
 
+MVC Helpers
+	https://www.c-sharpcorner.com/article/html-helpers-in-asp-net-mvc/
+	(basic)
+	https://www.tutorialsteacher.com/mvc/html-helpers
+	(complete)
+	https://dotnettutorials.net/lesson/listbox-html-helper-mvc/
+	(listbox)
 
+MVC validation
+	https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
+	but need to return the model in that view
+
+datepicker
+	https://www.c-sharpcorner.com/blogs/easy-way-to-use-datepicker-in-asp-net-mvc
+
+ajax mvc
+	https://www.c-sharpcorner.com/blogs/using-ajax-in-asp-net-mvc
