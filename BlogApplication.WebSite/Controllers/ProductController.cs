@@ -82,6 +82,34 @@ namespace BlogApplication.WebSite.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult CreateAjax(ProductModel inputModel)
+        {
+            ProductModel model = new ProductModel();
+            //ModelState.AddModelError("error", new InvalidOperationException());
+            //requires manual validation for each field
+            if (ModelState.IsValid)
+            {
+                model.ValidationMessage = "Success";
+            }
+            else
+            {
+                model.ValidationMessage = "Error adding product";
+            }
+            //try
+            //{
+            //    // TODO: Add insert logic here
+
+            //    return RedirectToAction("Index");
+            //}
+            //catch
+            //{
+            //    return View(model);
+            //}
+            
+            return Json(new { model, JsonRequestBehavior.AllowGet });
+        }
+
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {

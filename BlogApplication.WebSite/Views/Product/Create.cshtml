@@ -18,7 +18,7 @@
 
                 </div>
                 <div class="col-lg-2">
-                    @Html.TextBoxFor(m => m.Description, "", new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Description, "", new { @class = "form-control", @id="Description"})
                 </div>
             </div>
             <div class="row">
@@ -31,7 +31,7 @@
                     @Html.LabelFor(m => m.Price, new { @class = "form-text" })
                 </div>
                 <div class="col-lg-2">
-                    @Html.TextBoxFor(m => m.Price, "", new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Price, "", new { @class = "form-control" , @id="Price"})
                 </div>
             </div>
             <div class="row">
@@ -44,7 +44,7 @@
                     @Html.LabelFor(m => m.ProductDate, new { @class = "form-text" })
                 </div>
                 <div class="col-lg-2">
-                    @Html.TextBoxFor(m => m.ProductDate, "", new { @class = "datepicker form-control" })
+                    @Html.TextBoxFor(m => m.ProductDate, "", new { @class = "datepicker form-control", @id="ProductDate" })
                 </div>
             </div>
             <div class="row">
@@ -59,20 +59,43 @@
                 </div>
             </div>
             <input type="submit" class="btn btn-primary" value="Submit" />
+            <button id="btnSave">Submit Ajax</button>
         </div>
     }
 </main>
 <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
 @section scripts{
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
     <script src="~/Scripts/jquery-ui-1.13.2.js"></script>
     <script>
 
-        $(document).ready(function () {
+        $(function () {    
             $(".datepicker").datepicker({
                 dateFormat: "dd-mm-yy",
                 changemonth: true,
                 changeyear: true
+            });
+
+            $("#btnSave").click(function () {
+                //alert("");
+                var productObj = {};
+                productObj.description = $("#Description").val();
+                productObj.price = $("#Price").val();
+                productObj.productDate = $("#ProductDate").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action(actionName: "CreateAjax", controllerName: "Product")',
+                    data: JSON.stringify(productObj),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        alert("Data has been added successfully: " + data.model.ValidationMessage);                        
+                    },
+                    error: function (data) {
+                        alert("Error while inserting data" + data.model.ValidationMessage);
+                    }
+                });
+                return false;
             });
         });
     </script>
