@@ -11,6 +11,6 @@ namespace BlogApplication.WebSite.Models
         public int RowsPerPage { get; set; }
         public string TextFilter { get; set; }
        
-        public List<ProductModel> Products { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

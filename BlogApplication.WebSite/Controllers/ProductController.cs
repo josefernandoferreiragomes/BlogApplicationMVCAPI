@@ -8,6 +8,11 @@ using System.Web.Mvc;
 
 namespace BlogApplication.WebSite.Controllers
 {
+    public class ProductCategory
+    {
+        public int Id;
+        public string Description;
+    }
     public class ProductController : Controller
     {
         private IProductsRepository _productsRepository;
@@ -52,14 +57,17 @@ namespace BlogApplication.WebSite.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
-            return View();
+            AddProductViewModel model = FillProductTypeData();
+            return View(model);
         }
 
         // POST: Product/Create
         [HttpPost]
-        public ActionResult Create(ProductModel inputModel)
+        public ActionResult Create(AddProductViewModel inputModel)
         {
-            ProductModel model = new ProductModel();
+            
+            AddProductViewModel model = FillProductTypeData();
+
             //ModelState.AddModelError("error", new InvalidOperationException());
             if (ModelState.IsValid)
             {
@@ -68,7 +76,7 @@ namespace BlogApplication.WebSite.Controllers
             else
             {
                 model.ValidationMessage = "Error adding product";
-            }            
+            }
             //try
             //{
             //    // TODO: Add insert logic here
@@ -82,10 +90,31 @@ namespace BlogApplication.WebSite.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult CreateAjax(ProductModel inputModel)
+        private AddProductViewModel FillProductTypeData()
         {
-            ProductModel model = new ProductModel();
+            AddProductViewModel model = new AddProductViewModel();
+            //mock productCategory
+            List<ProductCategory> categorylistmock = new List<ProductCategory>();
+            categorylistmock.Add(new ProductCategory { Id = 1, Description = "Peripherals" });
+            categorylistmock.Add(new ProductCategory { Id = 2, Description = "Hardware" });
+            //
+
+            //fill selectlist
+            model.ListOfProductTypes = new List<SelectListItem>();
+            foreach (ProductCategory category in categorylistmock)
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = category.Description;
+                item.Value = category.Id.ToString();
+                model.ListOfProductTypes.Add(item);
+            }
+            return model;
+        }
+
+        [HttpPost]
+        public ActionResult CreateAjax(AddProductViewModel inputModel)
+        {
+            AddProductViewModel model = new AddProductViewModel();
             //ModelState.AddModelError("error", new InvalidOperationException());
             //requires manual validation for each field
             if (ModelState.IsValid)
@@ -118,7 +147,7 @@ namespace BlogApplication.WebSite.Controllers
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, ProductModel inputModel)
+        public ActionResult Edit(int id, AddProductViewModel inputModel)
         {
             try
             {

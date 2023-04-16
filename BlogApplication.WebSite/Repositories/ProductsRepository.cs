@@ -1,4 +1,5 @@
 ﻿using BlogApplication.WebSite.BlogApplicationService;
+using BlogApplication.WebSite.Factories;
 using BlogApplication.WebSite.Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace BlogApplication.WebSite.Interfaces
     public class ProductsRepository: IProductsRepository
     {
         ProductServiceClient _productServiceClient;
-
+        ServiceClientFactory<ProductServiceClient> _serviceClientFactory;
         public ProductsRepository()
         {
-            _productServiceClient = new ProductServiceClient("BasicHttpBinding_IProductService");
+            //_productServiceClient = new ProductServiceClient("BasicHttpBinding_IProductService");
+            _serviceClientFactory = new ServiceClientFactory<ProductServiceClient>();
+            _productServiceClient = _serviceClientFactory.GetClient();
         }
 
         public ProductsRepository(ProductServiceClient productServiceClient)
@@ -21,10 +24,10 @@ namespace BlogApplication.WebSite.Interfaces
             _productServiceClient = productServiceClient;
         }
 
-        public List<ProductModel> GetPageOfProducts(int pageSize, int pageIndex, string filter)
+        public List<Product> GetPageOfProducts(int pageSize, int pageIndex, string filter)
         {
 
-            List<ProductModel> model = new List<ProductModel>();
+            List<Product> model = new List<Product>();
 
             PageOfProductServiceIn objIn = new PageOfProductServiceIn();
             objIn.RowsPerPage=pageSize;
@@ -35,7 +38,7 @@ namespace BlogApplication.WebSite.Interfaces
             //temporary manual mapping
             foreach(PageOfProductServiceOutItem item in objOut.ListOfProducts)
             {
-                ProductModel product = new ProductModel
+                Product product = new Product
                 {
                     Id = item.Id,
                     Description = item.Description,

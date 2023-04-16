@@ -8,6 +8,6 @@ namespace BlogApplication.WebSite.Interfaces
 {
     public interface IProductsRepository
     {
-        List<ProductModel> GetPageOfProducts(int pageSize, int pageIndex, string filter);
+        List<Product> GetPageOfProducts(int pageSize, int pageIndex, string filter);
     }
 }
