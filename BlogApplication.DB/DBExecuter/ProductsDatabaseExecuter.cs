@@ -13,8 +13,13 @@ namespace BlogApplication.DB.DBExecuter
 {
     public class ProductsDatabaseExecuter : IProductsDatabaseExecuter
     {
-        SqlConnection sqlCon = null;
-        String SqlconString = ConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        private SqlConnection sqlCon = null;
+        private String SqlconString;
+
+        public ProductsDatabaseExecuter()
+        {
+            SqlconString = ConfigurationManager.ConnectionStrings["ProductsConnectionString"].ConnectionString;
+        }
         public List<ProductDB> StoredProcedureCall(ProductPageRequest request)
         {
             List<ProductDB> products = new List<ProductDB>();

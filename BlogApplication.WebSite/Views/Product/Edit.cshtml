@@ -1,4 +1,4 @@
-﻿@model BlogApplication.WebSite.Models.ProductModel
+﻿@model BlogApplication.WebSite.Models.AddProductViewModel
 @{
     ViewBag.Title = "Products";
 }
@@ -9,25 +9,43 @@
         <p class="lead">Edit</p>
     </section>
 
-    @using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Product",new { Id = Model.ProductItem.Id }, FormMethod.Post))
     {
-        <div class="f-group">
-            @Html.LabelFor(m => m.Description, new { @class = "form-text" })
-            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "form-control" })
-        </div>
-        <div class="f-group">
-            @Html.LabelFor(m => m.Price, new { @class = "form-text" })
-            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        <div class="container">
+            <div class="row f-group">
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.ProductItem.Description, new { @class = "form-text" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.ProductItem.Description, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.ValidationMessageFor(m => m.ProductItem.Description, "", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row f-group">
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.ProductItem.Price, new { @class = "form-text" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.ProductItem.Price, new { @class = "form-control" })
 
-        </div>
-        <div class="f-group">
-            @Html.LabelFor(m => m.ProductDate, new { @class = "form-text" })
-            @Html.TextBoxFor(m => m.ProductDate, new { @class = "datepicker" } )
+                </div>
+            </div>
+            <div class="row f-group">
+                <div class="col-lg-2">
+                    @Html.LabelFor(m => m.ProductItem.ProductDate, new { @class = "form-text" })
+                </div>
+                <div class="col-lg-2">
+                    @Html.TextBoxFor(m => m.ProductItem.ProductDate, new { @class = "datepicker" })
+                </div>
+            </div>
         </div>
         <p></p>
         <button type="submit" class="btn btn-primary">Submit</button>
-    }
+        }
 </main>
 <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
 @section scripts{

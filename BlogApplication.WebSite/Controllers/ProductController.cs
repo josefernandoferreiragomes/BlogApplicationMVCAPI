@@ -142,7 +142,10 @@ namespace BlogApplication.WebSite.Controllers
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            AddProductViewModel model = FillProductTypeData();
+            //mock
+            model.ProductItem = new Product { Description = "keyboard mock", Id = id, ProductDate= DateTime.Now };
+            return View(model);
         }
 
         // POST: Product/Edit/5
